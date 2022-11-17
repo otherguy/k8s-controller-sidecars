@@ -1,7 +1,6 @@
 FROM golang:1.10 AS build
 WORKDIR /go/src/github.com/otherguy/k8s-controller-sidecars
-RUN git clone --single-branch -b master \
-  https://github.com/otherguy/k8s-controller-sidecars.git /go/src/github.com/otherguy/k8s-controller-sidecars/
+ADD . .
 RUN go get -v
 RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -a -installsuffix cgo -o main .
 

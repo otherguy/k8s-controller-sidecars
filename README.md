@@ -1,7 +1,8 @@
 # Kubernetes Custom Controller - Sidecar Shutdown
 
 Kubernetes (cron)jobs sidecar terminator.
-Originally forked from https://github.com/otherguy/k8s-controller-sidecars .
+
+_Originally forked from https://github.com/nrmitchi/k8s-controller-sidecars_
 
 ## What is this?
 
