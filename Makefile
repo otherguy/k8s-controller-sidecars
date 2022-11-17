@@ -1,4 +1,4 @@
-IMAGE=nrmitchi/k8s-controller-sidecars:dev
+IMAGE=otherguy/k8s-controller-sidecars:dev
 
 build:
 	CGO_ENABLED=0 go build -a -installsuffix cgo -o main .
