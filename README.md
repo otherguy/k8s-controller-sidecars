@@ -18,7 +18,7 @@ This is a response to https://github.com/kubernetes/kubernetes/issues/25908.
 kubectl apply -f manifest.yml
 ```
 
-1. Add the `otherguy.io/sidecars` annotation to your pods, with a comma-seperated list of sidecar container names.
+1. Add the `pod.kubernetes.io/sidecars` annotation to your pods, with a comma-seperated list of sidecar container names.
 
 Example:
 
@@ -35,13 +35,14 @@ spec:
       template:
         metadata:
           annotations:
-            otherguy.io/sidecars: logging
+            pod.kubernetes.io/sidecars: cloud-sql-proxy
         spec:
           restartPolicy: Never
           containers:
             - name: test-job
               image: ubuntu:latest
-              command: ["sleep", "5"]
-            - name: logging
-              image: fluentd
+              command: ["sleep", "15"]
+            - name: cloud-sql-proxy
+              image: gcr.io/cloudsql-docker/gce-proxy:1.33.0-alpine
+              command: [ "/cloud_sql_proxy" ]
 ```
