@@ -1,4 +1,4 @@
-module otherguy.io/k8s-controller-sidecars
+module otherguy/k8s-controller-sidecars
 
 go 1.19
 
