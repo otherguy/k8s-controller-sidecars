@@ -4,6 +4,7 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"context"
 
 	log "github.com/Sirupsen/logrus"
 	api_v1 "k8s.io/api/core/v1"
@@ -53,11 +54,11 @@ func main() {
 		&cache.ListWatch{
 			ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
 				// list all of the pods (core resource) in the deafult namespace
-				return client.CoreV1().Pods(namespace).List(options)
+				return client.CoreV1().Pods(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options meta_v1.ListOptions) (watch.Interface, error) {
 				// watch all of the pods (core resource) in the default namespace
-				return client.CoreV1().Pods(namespace).Watch(options)
+				return client.CoreV1().Pods(namespace).Watch(context.TODO(), options)
 			},
 		},
 		&api_v1.Pod{}, // the target type (Pod)
