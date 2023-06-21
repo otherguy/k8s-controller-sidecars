@@ -9,7 +9,7 @@ require (
 	github.com/gorilla/websocket v1.5.0
 	k8s.io/api v0.27.3
 	k8s.io/apimachinery v0.27.3
-	k8s.io/client-go v0.27.1
+	k8s.io/client-go v0.27.3
 )
 
 require (
