@@ -1,11 +1,11 @@
-FROM golang:1.20.5 AS build
+FROM golang:1.20.3 AS build
 WORKDIR /go/src/github.com/otherguy/k8s-controller-sidecars
-RUN apt-get update && apt-get install -y upx
+RUN apt-get update && apt-get install -y upx-ucl
 ADD . .
 RUN go get -v \
- && CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -a -installsuffix cgo -o main . \
- && upx main \
- && mkdir -p /empty
+  && CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -a -installsuffix cgo -o main . \
+  && upx main \
+  && mkdir -p /empty
 
 FROM scratch
 LABEL maintainer="Alexander Graf <hi@otherguy.io"
