@@ -1,4 +1,4 @@
-FROM golang:1.20.3 AS build
+FROM golang:1.21.1 AS build
 WORKDIR /go/src/github.com/otherguy/k8s-controller-sidecars
 RUN apt-get update && apt-get install -y upx-ucl
 ADD . .
