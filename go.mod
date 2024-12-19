@@ -6,7 +6,7 @@ require (
 	github.com/Sirupsen/logrus v1.0.6
 	github.com/avast/retry-go v3.0.0+incompatible
 	github.com/deckarep/golang-set v1.8.0
-	github.com/gorilla/websocket v1.5.0
+	github.com/gorilla/websocket v1.5.3
 	k8s.io/api v0.27.3
 	k8s.io/apimachinery v0.27.3
 	k8s.io/client-go v0.27.3
