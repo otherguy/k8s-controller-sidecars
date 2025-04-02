@@ -1,4 +1,4 @@
-FROM golang:1.23.4 AS build
+FROM golang:1.24.2 AS build
 WORKDIR /go/src/github.com/otherguy/k8s-controller-sidecars
 ADD . .
 RUN go get -v \
