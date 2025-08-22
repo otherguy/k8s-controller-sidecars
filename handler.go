@@ -91,10 +91,26 @@ func (t *SidecarShutdownHandler) ObjectCreated(obj interface{}) {
 		return
 	}
 
+	// Get a set of container names actually defined in the pod spec
+	definedContainers := set.NewSet()
+	for _, container := range pod.Spec.Containers {
+		definedContainers.Add(container.Name)
+	}
+
 	sidecars := set.NewSet()
+	skippedSidecars := set.NewSet()
 
 	for _, s := range strings.Split(sidecarsString, ",") {
-		sidecars.Add(s)
+		sidecarName := strings.TrimSpace(s)
+		if definedContainers.Contains(sidecarName) {
+			sidecars.Add(sidecarName)
+		} else {
+			skippedSidecars.Add(sidecarName)
+		}
+	}
+	
+	if skippedSidecars.Cardinality() > 0 {
+		log.Warnf("    Skipping non-existent sidecar containers: %s", skippedSidecars)
 	}
 
 	allContainers := set.NewSet()
