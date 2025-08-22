@@ -1,2 +1,9 @@
-main
-dev/Dockerfile
+.git
+.github
+.editorconfig
+.gitignore
+.dockerignore
+manifest.yml
+Makefile
+Dockerfile
+*.md

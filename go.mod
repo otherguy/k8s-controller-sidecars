@@ -1,6 +1,6 @@
 module otherguy/k8s-controller-sidecars
 
-go 1.23.0
+go 1.25.0
 
 require (
 	github.com/Sirupsen/logrus v1.0.6

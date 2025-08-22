@@ -2,7 +2,7 @@ The MIT License (MIT)
 =====================
 
 - Copyright © `2021` [Nicholas Mitchinson](https://github.com/nrmitchi)
-- Copyright © `2022` [Alexander Graf](https://github.com/otherguy)
+- Copyright © `2022-2025` [Alexander Graf](https://github.com/otherguy)
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
