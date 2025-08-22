@@ -46,3 +46,14 @@ spec:
               image: gcr.io/cloudsql-docker/gce-proxy:1.33.0-alpine
               command: [ "/cloud_sql_proxy" ]
 ```
+
+## Dependency Management
+
+This project uses Go modules for dependency management.
+
+To upgrade dependencies, use [go-mod-upgrade](https://github.com/oligot/go-mod-upgrade):
+
+```sh
+go install github.com/oligot/go-mod-upgrade@latest
+go-mod-upgrade
+```

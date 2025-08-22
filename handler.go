@@ -6,7 +6,7 @@ import (
 
 	"github.com/avast/retry-go"
 
-	log "github.com/Sirupsen/logrus"
+	log "github.com/sirupsen/logrus"
 	core_v1 "k8s.io/api/core/v1"
 
 	"k8s.io/client-go/tools/clientcmd"
