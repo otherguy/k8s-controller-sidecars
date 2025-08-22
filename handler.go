@@ -139,9 +139,11 @@ func (t *SidecarShutdownHandler) ObjectCreated(obj interface{}) {
 	// ones still running, issue them each a shutdown command
 	if runningContainers.Union(completedContainers).Equal(allContainers) {
 		log.Debugf("  We have all the containers")
-		if runningContainers.Equal(sidecars) {
+		if runningContainers.Equal(sidecars) && sidecars.Cardinality() > 0 {
 			log.Infof("    Sending shutdown signal to containers: %s, %s", pod.Name, sidecars)
 			sendShutdownSignal(pod, sidecars)
+		} else if sidecars.Cardinality() == 0 {
+			log.Infof("    No valid sidecar containers to shut down for pod: %s", pod.Name)
 		}
 	}
 }
