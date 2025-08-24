@@ -109,6 +109,9 @@ func (c *Controller) processNextItem() bool {
 			c.queue.Forget(key)
 			utilruntime.HandleError(err)
 		}
+
+		// stop processing this item and move on to the next
+		return true
 	}
 
 	// if the item doesn't exist then it was deleted and we need to fire off the handler's
