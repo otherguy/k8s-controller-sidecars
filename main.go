@@ -1,10 +1,10 @@
 package main
 
 import (
+	"context"
 	"os"
 	"os/signal"
 	"syscall"
-	"context"
 
 	log "github.com/sirupsen/logrus"
 	api_v1 "k8s.io/api/core/v1"
@@ -43,21 +43,22 @@ func main() {
 	// get the Kubernetes client for connectivity
 	client := getKubernetesClient()
 
+	// use NamespaceAll to monitor pods across every namespace
 	namespace := meta_v1.NamespaceAll
 
 	// create the informer so that we can not only list resources
-	// but also watch them for all pods in the default namespace
+	// but also watch them for all pods throughout the cluster
 	informer := cache.NewSharedIndexInformer(
 		// the ListWatch contains two different functions that our
 		// informer requires: ListFunc to take care of listing and watching
 		// the resources we want to handle
 		&cache.ListWatch{
 			ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
-				// list all of the pods (core resource) in the deafult namespace
+				// list all of the pods (core resource) across all namespaces
 				return client.CoreV1().Pods(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options meta_v1.ListOptions) (watch.Interface, error) {
-				// watch all of the pods (core resource) in the default namespace
+				// watch all of the pods (core resource) across all namespaces
 				return client.CoreV1().Pods(namespace).Watch(context.TODO(), options)
 			},
 		},
