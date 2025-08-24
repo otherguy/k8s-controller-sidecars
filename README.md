@@ -28,7 +28,7 @@ This is a response to https://github.com/kubernetes/kubernetes/issues/25908.
 kubectl apply -f manifest.yml
 ```
 
-1. Add the `pod.kubernetes.io/sidecars` annotation to your pods, with a comma-seperated list of sidecar container names.
+1. Add the `pod.kubernetes.io/sidecars` annotation to your pods, with a comma-separated list of sidecar container names.
 
 Example:
 
